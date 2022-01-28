@@ -63,19 +63,39 @@ class GameViewController: UIViewController {
     // MARK: -
     
     @objc func swipeLeftAction() {
-        labelMove.frame = labelMove.frame.offsetBy(dx: -30, dy: 0)
+        if !labelMove.frame.origin.x.isLess(than: view.frame.minX + labelMove.frame.width) {
+            labelMove.frame = labelMove.frame.offsetBy(dx: -30, dy: 0)
+        } else {
+            labelMove.frame = labelMove.frame.offsetBy(dx: 0, dy: 0)
+        }
     }
     
     @objc func swipeReghtAction() {
-        labelMove.frame = labelMove.frame.offsetBy(dx: 30, dy: 0)
+        if labelMove.frame.origin.x.isLess(than: view.frame.maxX - labelMove.frame.width) {
+            labelMove.frame = labelMove.frame.offsetBy(dx: 30, dy: 0)
+        } else {
+            labelMove.frame = labelMove.frame.offsetBy(dx: 0, dy: 0)
+        }
     }
     
     @objc func swipeUpAction() {
-        labelMove.frame = labelMove.frame.offsetBy(dx: 0, dy: -30)
+        if !labelMove.frame.origin.y.isLess(than: view.frame.minY + labelMove.frame.height) {
+            labelMove.frame = labelMove.frame.offsetBy(dx: 0, dy: -30)
+        } else {
+            labelMove.frame = labelMove.frame.offsetBy(dx: 0, dy: 0)
+        }
+        print(view.frame.minY + 50)
+        print(labelMove.frame.origin.y)
     }
     
     @objc func swipeDowntAction() {
-        labelMove.frame = labelMove.frame.offsetBy(dx: 0, dy: 30)
+        if labelMove.frame.origin.y.isLess(than: view.frame.maxY - labelMove.frame.height) {
+            labelMove.frame = labelMove.frame.offsetBy(dx: 0, dy: 30)
+        } else {
+            labelMove.frame = labelMove.frame.offsetBy(dx: 0, dy: 0)
+        }
+        
+        
     }
 
     /*
